@@ -1,0 +1,9 @@
+<ol class="list-group d-flex flex-row flex-wrap">
+  <li *ngFor="let itemPersonne of getPersonnes()"
+  class="list-group-item col-3">
+    <span >
+      <img src="assets/images/{{itemPersonne?.path}}" alt="{{itemPersonne?.name}}" width="50px" height="50px" class="rounded-circle ">
+      <span class="ml-3">{{ itemPersonne?.firstname | titlecase}} {{ itemPersonne?.name | titlecase}}</span>
+    </span>
+  </li>
+</ol>

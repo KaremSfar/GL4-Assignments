@@ -1,0 +1,132 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <img [src]='students.img' alt="avatar">
+        <div class="modal-about">
+          <div class="font-weight-bold p-t-5 font-17">
+            {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+    <form class="register-form m-4" [formGroup]="stdForm" (ngSubmit)="submit">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Numéro d'inscription</mat-label>
+            <input matInput formControlName="rollNo" required>
+            <mat-icon matSuffix>school</mat-icon>
+            <mat-error *ngIf="stdForm.get('rollNo').hasError('required')">
+              Le numéro d'inscription est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Nom Complet</mat-label>
+            <input matInput formControlName="name" required>
+            <mat-icon matSuffix>face</mat-icon>
+            <mat-error *ngIf="stdForm.get('name').hasError('required')">
+              Le nom complet est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3">
+            <mat-label>Choisir une filière</mat-label>
+            <mat-select formControlName="department" required>
+              <mat-option [value]="'gl'">
+                Génie Logiciel
+              </mat-option>
+              <mat-option [value]="'iia'">
+                Informatique Industrielle & Automatique
+              </mat-option>
+              <mat-option [value]="'imi'">
+                Instrumentation et Maintenance Industrielle
+              </mat-option>
+              <mat-option [value]="'rt'">
+                Réseaux Informatiques et Télécommunications
+              </mat-option>
+              <mat-option [value]="'ch'">
+                Chimie Industrielle
+              </mat-option>
+              <mat-option [value]="'bio'">
+                Biologie industrielle
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="stdForm.get('department').hasError('required')">
+              Le choix de filière est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3">
+            <mat-label>Genre</mat-label>
+            <mat-select formControlName="gender" required>
+              <mat-option [value]="'male'">
+                Masculin
+              </mat-option>
+              <mat-option [value]="'female'">
+                Féminin
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="stdForm.get('gender').hasError('required')">
+              Le genre est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Numéro de téléphone</mat-label>
+            <input matInput formControlName="mobile" type="number">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="stdForm.get('mobile').hasError('required')">
+              Le numéro de téléphone est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="stdForm.get('email').hasError('required') || stdForm.get('email').touched">
+              Veuillez entrer une adresse email valide
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3">
+            <mat-label>Date de naissance</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="stdForm.get('dob').hasError('required')">
+              La date de naissance est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!stdForm.valid" [mat-dialog-close]="1"
+              (click)="confirmAdd()">Ajouter</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

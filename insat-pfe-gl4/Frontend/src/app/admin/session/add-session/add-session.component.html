@@ -1,0 +1,108 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Créer une session</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Session</a>
+            </li>
+            <li class="breadcrumb-item active">Créer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Créer une session</h2>
+
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="sessionForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3">
+                    <mat-label>Numéro de session</mat-label>
+                    <input type="number" matInput formControlName="number" required>
+                    <mat-error *ngIf="sessionForm.get('number').hasError('required')">
+                      Le numéro de session est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3">
+                    <mat-label>Date de début</mat-label>
+                    <input matInput [matDatepicker]="pickerOne" formControlName="dob" required>
+                    <mat-datepicker-toggle matSuffix [for]="pickerOne"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerOne></mat-datepicker>
+                    <mat-error *ngIf="sessionForm.get('dob').hasError('required')">
+                      La date de début est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3">
+                    <mat-label>Date de fin</mat-label>
+                    <input matInput [matDatepicker]="pickerTwo" formControlName="doe" required>
+                    <mat-datepicker-toggle matSuffix [for]="pickerTwo"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerTwo></mat-datepicker>
+                    <mat-error *ngIf="sessionForm.get('doe').hasError('required')">
+                      La date de fin est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3">
+                    <mat-label>Président</mat-label>
+                    <mat-select formControlName="president" required>
+                      <mat-option *ngFor="let president of teachers" [value]="president">
+                        {{president.name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="sessionForm.get('president').hasError('required')">
+                      Ce champ est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3">
+                    <mat-label>Etudiants</mat-label>
+                    <mat-select formControlName="students" required multiple>
+                      <mat-option *ngFor="let student of students" [value]="student">
+                        {{student.name}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="sessionForm.get('students').hasError('required')">
+                      Ce champ est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <button class="mr-3" [disabled]="!sessionForm.valid " mat-raised-button
+                          color="primary">Ajouter
+                  </button>
+                  <button type="button" mat-button>Annuler</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

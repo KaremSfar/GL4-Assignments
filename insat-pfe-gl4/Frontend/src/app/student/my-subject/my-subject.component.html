@@ -1,0 +1,96 @@
+<section class="content">
+
+<div *ngIf="subject!==null" class="container-fluid">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-12">
+    <div class="card">
+      <div class="header">
+        <h2>Votre sujet</h2>
+      </div>
+      <div class="tableBody">
+        <div class="table-responsive">
+          <table class="table">
+            <thead> 
+              <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Domaine</th>
+                <th>Encadrant</th>
+                <th>Rapport</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Winno</td>
+               
+                <td>Un stage PFE de 5 mois..</td>
+                <td>Développement FULLSTACK</td>
+                <td>
+                  <button *ngIf="teacher===null" mat-raised-button color="primary" class="l-bg-red shadow-style" type="submit" (click)="openAddTeacherDialog()" >Demander encadrement</button>
+                  <span  *ngIf="teacher==='waiting'" class="label l-bg-blue shadow-style" >en attente de Aymen Sellaouti</span>
+                  <span  *ngIf="teacher==='approved'" class="label l-bg-green shadow-style">Aymen Sellaouti</span>
+                </td>
+                <td> <li  class="media mb-3">
+                  <span class="mr-3 align-self-center img-icon danger-rgba text-danger"><i
+                      class="far fa-file-pdf"></i></span>
+                  <div  class="media-body">
+                    <h5 class="font-16 mb-1">Rapport PFE</h5>
+                    <p>.pdf, 10.5 MB</p>
+                  </div>
+                  <div class="media-cta">
+                    <td>
+                      <i class="far fa-trash-alt pr-3"></i>
+                      <i class="far fa-arrow-alt-circle-down"></i>
+                    </td>
+                  </div>
+                </li>
+
+
+              
+              
+              </td>
+                
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="subject===null" class="container-fluid">
+<div class="auth-container">
+    <div class="row auth-main">
+      
+      <div class="col-sm-12 auth-form-section">
+        <div class="form-section">
+          <div class="auth-wrapper">
+            <form>
+              <span class="error-header p-b-45">
+                Pas de sujets
+              </span>
+              <span class="error-subheader p-b-5">
+                Vous n'avez ajouté aucun sujet pour le moment.
+              </span>
+              <span class="error-subheader2 p-b-5">
+                Veuillez appuyer sur ce bouton pour ajouter un sujet
+              </span>
+              <div class="container-auth-form-btn mt-5">
+                <button mat-flat-button color="primary" class="auth-form-btn" type="submit" (click)="openAddSubjectDialog()">
+                  Ajouter Sujet 
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </section>
+  

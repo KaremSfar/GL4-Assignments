@@ -1,0 +1,99 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Sessions</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Accueil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <mat-tab-group>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <i class="material-icons-two-tone pr-3">list_alt</i>
+              Liste
+            </ng-template>
+            <div class="mt-5">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                  <div class="body">
+                    <div class="table-responsive">
+                      <div class="materialTableHeader">
+                        <div class="row">
+                          <div class="col-8">
+                            <ul class="header-buttons-left ml-0">
+                              <li class="dropdown">
+                                <h2>
+                                  <strong>Sessions</strong></h2>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+                        <ng-container matColumnDef="nbr">
+                          <mat-header-cell *matHeaderCellDef mat-sort-header>Numéro de session
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let row"> {{row.nbr}}
+                          </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="dob">
+                          <mat-header-cell *matHeaderCellDef mat-sort-header>Date de début
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let row"> {{row.dob | date}}
+                          </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="doe">
+                          <mat-header-cell *matHeaderCellDef mat-sort-header>Date de fin
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let row">
+                            {{row.doe | date}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="president">
+                          <mat-header-cell *matHeaderCellDef mat-sort-header>Président
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let row"> {{row.president.name}}
+                          </mat-cell>
+                        </ng-container>
+                        <!-- actions -->
+                        <ng-container matColumnDef="actions">
+                          <mat-header-cell class="pr-0" *matHeaderCellDef>Actions
+                          </mat-header-cell>
+                          <mat-cell *matCellDef="let row; let i=index;" class="pr-0">
+                            <button  mat-raised-button color="primary"
+                                    class="l-bg-red shadow-style" type="submit" (click)="openAddDialog()">
+                              Créer une soutenance
+                            </button>
+                          </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns">
+                        </mat-header-row>
+                        <!-- <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> -->
+                        <mat-row *matRowDef="let row; columns: displayedColumns;"
+                                 [style.cursor]="'pointer'" matRipple>
+                        </mat-row>
+                      </mat-table>
+                      <mat-paginator #paginator [length]="dataSource.length" [pageIndex]="0"
+                                     [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+                      </mat-paginator>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+</section>

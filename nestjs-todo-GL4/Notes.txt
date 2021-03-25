@@ -1,0 +1,282 @@
+// OLD STUFF HERE //
+
+
+// MODULES //
+
+nest g mo nomModule
+@Global() => si on veut importer le module partout
+
+
+
+// PROVIDERS //
+Un provider peut injecter des dépendances, un provider fournit des fonctionalités et il est injectable; on peut y injecter d'autres providers
+Les services, repos, factories peuvent etre traitées comme providers
+
+
+--- Services 
+    Gere aspect metier
+    nest g s nomService
+
+--- Injection de dépendance 
+    Check angular course
+
+
+
+// Request Lifecycle //
+
+Browser 
+=> Middleware (classes qui font des traitements sur la requete) (ajouter des headers de sécurité, CORS normalement)
+=> Guards (Guarder Votre application)
+=> Intercepteur (ay requete entrante ou sortante passes thru the Interceptors)
+=> Pipes (utilisés pour valider ou transformer les Données)
+=> pour rétourner aux Interceptors lorsque la réponse est générée
+
+
+--- Pipes  
+    deux fonctionalités
+    - transformation Données : transformer données d'entrée sous forme souhaitée
+    - validation : evaluer données, et si valides passez les sinon exception
+    => les pipes fonctionnes sur les arguments gérés par l'action du controlleur
+    *** NEST APPEL LE PIPE JUSTE AVANT L'INVOCATION D'UNE METHODE ***
+
+    nest yaatina pipes hadhrin
+        - ValidationPipe
+        - ParseIntPipe({errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE}) // the http status code if error; new when passing params, not needed if not (coz DI)
+        - ParseBoolPipe
+        - ParseArrayPipe
+        - ParseUUIDPipe
+        - new DefaultValuePipe(0)
+
+
+    --- ValidationPipe ---
+    npm i --save class-validator class-transformer
+
+    in main.ts => app.useGlobalPipes(new ValidationPipe()); =>> all classes and DTO with validatros seront validés automatiquement!!
+
+    * pour valider une route : @UsePipes(ValidationPipe)
+    * pour valider toutes les routes d'un controlleur => @usePipes on class level
+    * pour appliquer sur un parameter (comme @Body(SomePipe))
+
+    NB1: en recevant des requetes, le corps des objets est JS standard; new ValidationPipe({transform: true}); transforme automatiquement les payload en se basant sur les DTOs 
+    NB2: Whitelist => accepts ONLY properties defined in DTO, les autres ignorées
+    NB3: forbidNonWhitelisted => error if property not in whitelist
+    NB4: message => error message      
+        - $value : valeur validée
+        - $property : nom de la prop de l'objet qui a été validée
+        - $target : nom de classe de l'objet validé
+        - $constraint1, $constraint2, $constraint3 ... : les contraintes spécifiées par la validation
+
+    Utilisations :
+        Decorate your DTOs Bro
+
+
+
+    ** Class transformer : @Type(() => Number)
+
+
+    --- Custom Pipes ---
+    nest g pipe folder/pipename
+    must implement PipeTransform
+    must implement transform => takes value to transform and metadata (type : body, query, param,custom; metatype : type du parametre; data : donnée passée au décorateur)
+
+
+--- Middleware !
+    fonction appelé avant le traitement de la requete par controlleur
+    middleware a acces a requete, reponse et fonction next 
+
+    in order to use middlewares; AppModule doit implémenter NestModule; then implement configure afin de spécifier les middlewares a utiliser
+        consumer.apply(Middleware)
+            .forRoutes(
+                {path: 'courses'}, method: RequestMethod.GET},
+                CourseController,
+                String ensemble des routes
+            );
+    a - class : 
+        implements NestMiddleware
+        implement use
+    b - function
+        Request, Response from 'express';
+        export function logger(req:Request, res:Response, next:()=> void){
+            // TODO
+            next();
+        }
+
+
+    some cool middlewares
+        Helmet
+        Morgan
+        CORS
+            either use CorseMiddleWare or built in cors function    
+            Cors Middleware
+                corsOptions = { origin: 'smth either string or bool or regex or function', methods:'Methodes accepté soit chaine ou tableau 'GET,PUT', allowedHeaders, optionsSuccessStatus: }
+                 CorsMiddleware.configure(corsOptions);
+                    consumer
+                    .apply(CorsMiddleware).forRoutes('')
+            function
+                app.eanbleCors({
+                    origin:['lol'],
+                    optionsSuccessStatus : 202
+                })
+    --- Exception Filters ---
+    Nest comes with a built-in exceptions layer which is responsible for processing all unhandled exceptions across an application. 
+
+    to use built in exceptions, just use throw new ExceptionNameMostLikelyInheritingHttpException
+
+    custom exceptions
+        export class ForbiddenException extends HttpException {
+            constructor() {
+                super('Forbidden', HttpStatus.FORBIDDEN);
+            }
+        }
+
+    ** Custom Filters **
+    class implements ExceptionFilter
+    @Catch(ExceptionToCatch)
+    implement catch(Exception, ArgumentHost [used to get a context object for Request and Response])
+
+
+    to use the filter : @UseFilter(Filter [all exceptions if empty]) on method / class
+        Globally => app.useGlobalFilters(Filters) !! filters must be from MOST GENERIC to MOST SPECIFIC
+
+    
+
+
+    --- Interceptors ---
+    => lier une logique supplémentaire avant/apres l'execution de la methode
+
+    implements NestInterceptor
+    implement intercept
+
+    next.handle() => observable : check angular
+
+=========== Variables d'environnement ============
+    1) dotenv npm i dotenv; import * as dotenv from 'dotenv'; process.env.APP_PORT
+    2) nestjs/config
+        npm i --save @nestjs/config
+        Add ConfigModule.forRoot({isGlobal: true}) to modules in App modules
+        use DI to inject 
+
+
+=========== INTERACTION AVEC BDD ================
+    TYPEORM :
+    // Install 
+        npm i --save @nestjs/typeorm(couche nest qui prend facilite l'utilsiation de typeorm) typeorm(orm) mysql (driver)
+        in Appmodule imports =>
+            TypeOrmModule.forRoot({
+                type:'mysql',
+                host:process.env.DB_HOST,
+                port: 3306,
+                username: process.env.DB_USER,
+                password: process.env.DB_PASSWORD,
+                database: process.env.DB_NAME,
+                entities: [],
+                synchronize: true 
+            })
+
+    //Entity
+        @Entity([tableName])
+        @Column([{
+            type,
+            name,
+            length,
+            nullable,
+            unique,
+            update, // if false, the 'save' operation wont change anything in this column, it would only be writable in insertion
+            select // if false, this column's data wont be shown avec une requete standard
+        }])
+        NB: every entity must be added to 'entities' in TypeOrmModule.forRoot  or use regualr expression : "dist/**/*.entity{.ts,.js}"
+        @PrimaryColumn() => clef primaire (can be on 2 Column for composite primary key)
+        @PrimaryGeneratedColumn() => clef primaire auto generee
+        @PrimaryGeneratedColumn('uuid') => clef primaire auto generee as uuid string
+
+        some Special Columns offered by Nest
+        @CreatedDateColumn()
+        @UpdateDateColumn()
+        @DeleteDateColum()
+        @VersionColumn() => how many time it changed
+
+
+    //Repositories !!
+    chaque entité a son propre repo 
+    best pract : create a repo extending the base repo
+
+    steps : 
+        - in module to use repo : 
+            import typeOrmModule.forFeature([Entities associées a ce module])
+        [Using Base Repo]
+        in service (or wherever we need to inject the repo)
+            constructor( @InjectRepository(Entity) private readonly TodoRepo: Repository<TodoEntity)
+
+    functionalities (all async)
+        save(entities or array of entities) ==> if entity exists, update; else insert to bdd
+            in case array => all in one transaction
+            mise a jour partielle => les champs inexistant ne seront pas pris en considération
+
+        preload : given a javascript object, it will return an Entity object such that :
+            if entity exists in bdd, load it, replace all values with the new ones !! and give the entity object
+            else return undefined if ID not found
+            // const newEntity = await repo.preload({id,name,firstname});
+                if(newEntity) await repo.save(newEntity)
+        create : 
+        update : cool stuff, mets a jour partiellement une entité
+
+        await this.repo.delete(entite ou tableau(transaction) ou {critere:lol})
+        
+        soft delete ! need @DeleteDateColumn()  // no need to take care of deletedAt column and all, Typeorm takes care of errything
+        this.repo.sofDelete(id) // this.repo.restore(id)
+
+        count([{critere}])
+        increment/decrement({critere,champ,valeurAincrementer})
+
+        find({criteres}); also take an options object
+        find options 
+            select : les champs a selectionner
+            relations : quels champs de relation charger avec l'entité pricinpale, racourci pour le join et leftJoinAndSelect
+            join : version etendue de relations
+                {alias : 'table', leftJoinAndSelect: {tableAColumn: "alias.tableBColumn}} i guess not sure
+            where : add conditions
+            order : self explanatory
+            skip : offset
+            take : limite
+            cache : permet de cacher cetter requete (noice)
+
+            ++++ criteria options avancées
+            not, LessThan[OrEqual], Equal, Like, Between,In, Any,IsNull {CreatedAd : MoreThan('2020-06-06-17')}
+
+
+    // DATA BASE RELATIONS :
+    @OneToMany(type => TodoEntity,(todo) => todo.user,{    nullable:true,    cascade:true})
+    @ManyToOne(type => UserEntity,(user) => user.todos,{  cascade: ['insert','update'],  nullable: true,  eager: false}) // EAGER CAN ONLY BE SET IN ONE SIDE OF THE REALTION BRUH
+
+
+===== Authentification et authorization ======
+    npm i bcrypt
+    controller service user entity and dtos for users; the service only needs register and login
+        register saves the user in db and returns the user object 
+        login checks that user in db and returns a token
+
+    === PASSPORT STUFF : passport will, when taking a jwt token 
+        1) decrypt the payload
+        2) try to fetch the user from DB and validate him
+
+    npm install --save @nestjs/passport passport [passport-local]
+    npm install --save-dev @types/passport-local // nah
+
+    in auth.module => imports :  PassportModule.register({defaultStrategy:'jwt'}) && 
+    JwtModule.register({ // the service injected into the JwtStrategy that will actually do the jwt thingies
+      secret: process.env.SECRET,
+      signOptions:{
+        expiresIn: 3600 
+      }
+    })
+
+    GetUser = createParamDecorator((data,req): UserEntity => {return req.user})
+
+
+
+===== Guards   ==================
+    Les guardes sont des classes dont le seul role est de vérifier si une requetes doit etre géré par un controlleur ou non;
+    @UseGuards(AuthGuard('jwt')) // jwt is optional
+
+    //TODO: CHECK AUTH ROLES
+

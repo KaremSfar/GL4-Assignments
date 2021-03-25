@@ -1,0 +1,144 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Ajouter un professeur</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i> Accueil</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Professeurs</a>
+            </li>
+            <li class="breadcrumb-item active">Ajouter</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Ajouter un professeur</h2>
+
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="proForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Nom Complet</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="proForm.get('name').hasError('required')">
+                      Le nom complet est obligatoire !
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Genre</mat-label>
+                    <mat-select formControlName="gender" required>
+                      <mat-option [value]="'male'">
+                        Masculin
+                      </mat-option>
+                      <mat-option [value]="'female'">
+                        Féminin
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="proForm.get('gender').hasError('required')">
+                      Le genre est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Numéro de téléphone</mat-label>
+                    <input matInput formControlName="mobile" type="number" required>
+                    <mat-error *ngIf="proForm.get('mobile').hasError('required')">
+                      Le numéro de téléphone est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput formControlName="password" type="password" required>
+                    <mat-error *ngIf="proForm.get('password').hasError('required')">
+                      Le mot de passe est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Confirmer le mot de passe</mat-label>
+                    <input matInput formControlName="conformPassword" type="password">
+                    <mat-error *ngIf="proForm.get('conformPassword').hasError('required')">
+                      Veuillez entrer le même mot de passe
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Sélectionner le département</mat-label>
+                    <mat-select formControlName="department" required>
+                      <mat-option [value]="'gpi'">
+                        Génie Physique et Instrumentation
+                      </mat-option>
+                      <mat-option [value]="'gim'">
+                        Génie Informatique et Mathématique
+                      </mat-option>
+                      <mat-option [value]="'gbc'">
+                        Génie Biologique et de Chimie
+                      </mat-option>
+                      <mat-option [value]="'slf'">
+                        Sciences sociales, Langues et Formation Générale
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="proForm.get('department').hasError('required')">
+                      Le département est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="proForm.get('email').hasError('email') && proForm.get('email').touched">
+                      Veuillez entrer un email valide
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="outline">
+                    <mat-label>Ajouter une image</mat-label>
+                    <ngx-mat-file-input formControlName="uploadImg">
+                    </ngx-mat-file-input>
+                    <mat-icon matSuffix>face</mat-icon>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <button class="mr-3" [disabled]="!proForm.valid " mat-raised-button color="primary">Ajouter</button>
+                  <button type="button" mat-button>Annuler</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

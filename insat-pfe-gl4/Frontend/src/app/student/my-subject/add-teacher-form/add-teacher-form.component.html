@@ -1,0 +1,39 @@
+<div>
+    <h2 mat-dialog-title>Add User</h2>
+    <div mat-dialog-content>
+        <form [formGroup]="addCusForm" (ngSubmit)="onSubmitClick()">
+    
+           
+            <div class="text-inside">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Enseignant</mat-label>
+                    <mat-select formControlName="teacher">
+                      <mat-option value="as">Aymen Sellaouti</mat-option>
+                      <mat-option value="ls">Lilia Sfaxi</mat-option>
+                    </mat-select>
+                <mat-error *ngIf="addCusForm.get('teacher').hasError('required')">
+                  Teacher is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="text-inside">
+                
+               
+                  <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>message</mat-label>
+                    <textarea matInput formControlName="message" rows="5" required></textarea>
+                    <mat-icon matSuffix>message</mat-icon>
+                    <mat-error *ngIf="addCusForm.get('message').hasError('required')">
+                      message is required
+                    </mat-error>
+                  </mat-form-field>
+            </div>
+            
+            <div class="btn-sec">
+                <button class="mr-3" mat-raised-button color="primary">Save</button>
+                <button type="button" mat-button (click)="closeDialog()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

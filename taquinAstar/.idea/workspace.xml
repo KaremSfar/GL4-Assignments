@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="97668482-e9e2-4986-ba96-350f1b471577" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/taquin/implementation/EtatTaquinSommeDistance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/com/taquin/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/com/taquin/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/code/com/taquin/implementation/EtatTaquin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/code/com/taquin/implementation/EtatTaquin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/taquin/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/taquin/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/taquin/implementation/EtatTaquin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/taquin/implementation/EtatTaquin.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kji6U6EldbbwCGvueeyhnRZQYt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.taquin.Main" />
+      <module name="code" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.taquin.test.MainTest" />
+      <module name="code" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Test" />
+      <item itemvalue="Application.Main" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97668482-e9e2-4986-ba96-350f1b471577" name="Default Changelist" comment="" />
+      <created>1606220225594</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606220225594</updated>
+      <workItem from="1606220228767" duration="10007000" />
+      <workItem from="1606230644154" duration="98000" />
+      <workItem from="1606230840114" duration="27000" />
+      <workItem from="1606234994614" duration="295000" />
+      <workItem from="1606251180294" duration="6413000" />
+      <workItem from="1606295152745" duration="2748000" />
+      <workItem from="1606298350131" duration="481000" />
+      <workItem from="1607440295344" duration="53000" />
+      <workItem from="1607456589099" duration="11300000" />
+      <workItem from="1607471750888" duration="37000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606296100511">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1606296100511" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1606255837544">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1606255837544" />
+    <state x="689" y="304" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1606295960199">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="689" y="304" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1606295960199" />
+    <state x="704" y="103" key="Diagram.Print.Preview.Dialog" timestamp="1607463006675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="704" y="103" key="Diagram.Print.Preview.Dialog/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607463006675" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1607460303158">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607460303158" />
+    <state width="1877" height="335" key="GridCell.Tab.0.bottom" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state width="1877" height="335" key="GridCell.Tab.0.center" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.0.center/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state width="1877" height="335" key="GridCell.Tab.0.left" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.0.left/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state width="1877" height="335" key="GridCell.Tab.0.right" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.0.right/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state width="1877" height="335" key="GridCell.Tab.1.bottom" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state width="1877" height="335" key="GridCell.Tab.1.center" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.1.center/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state width="1877" height="335" key="GridCell.Tab.1.left" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.1.left/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state width="1877" height="335" key="GridCell.Tab.1.right" timestamp="1607471725837">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="335" key="GridCell.Tab.1.right/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471725837" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1607471761312">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1607471761312" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1606254013917">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1280.59.1280.984@0.0.1920.1040" timestamp="1606254013917" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((java.util.LinkedList)fermes).get(0)" custom="java.util.LinkedList" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
