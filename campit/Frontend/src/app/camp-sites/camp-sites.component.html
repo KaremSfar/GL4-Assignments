@@ -1,0 +1,62 @@
+<!-- Page Title -->
+<div class="hun-section-page-title layout-1 hide-breadcrumbs no-parallax m-b-130">
+  <div class="inner-section">
+    <div class="bg-img parallax100"><span class="inner-parallax" style="background-image: url(../../assets/images/bg-01.jpg);"></span></div>
+
+    <div class="container">
+      <h2 class="main-title">
+        Camping Sites
+      </h2>
+
+      <ul class="breadcrumbs">
+        <li>
+          <a href="#">
+            <span>Home</span>
+          </a>
+
+          <span class="breadcrumb-divider"></span>
+        </li>
+
+        <li>
+          <span> Camping Sites</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- end Page Title -->
+
+<!-- Archive Blog -->
+<div class="hun-section-archive-blog layout-2 no-sidebar m-b-130">
+  <div class="inner-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-content">
+          <div class="content-sec">
+            <div class="list-post row">
+                <app-camp-site *ngFor="let camp of camps" [camp] = "camp" class="col-md-6 col-xl-4"></app-camp-site>
+            </div>
+
+            <div class="loop-pagination text-center">
+              <ul>
+                <li>
+                  <a class="next page-numbers" href="#"><i class="icon ion-chevron-left"></i></a>
+                </li>
+
+                <li>
+                  <span class="page-numbers current">1</span>
+                </li>
+
+                <li>
+                  <a class="next page-numbers" href="#"><i class="icon ion-chevron-right"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end Archive Blog -->
+<app-camp-form [camps] = "camps"></app-camp-form>
